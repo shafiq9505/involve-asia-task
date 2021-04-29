@@ -64,25 +64,32 @@
 										<b-row v-for="(parameter, innerIndex) in fields.rules[index].parameters" :key="innerIndex">
 											<b-col cols="8" class="px-1">
 												<b-input-group>
-													<b-form-input placeholder="insert parameter" cols="6" v-model="fields.rules[index].parameters[innerIndex]"></b-form-input>
+													<b-form-input
+														placeholder="insert parameter"
+														class="pr-0 mr-0"
+														cols="6"
+														v-model="fields.rules[index].parameters[innerIndex]"
+													></b-form-input>
 													<b-input-group-append>
 														<!-- Add rule -->
-														<b-button
+														<div
+															class="form-control pl-0 ml-0 add-rule"
 															@click="addParameters(index)"
 															v-show="fields.rules[index].parameters.length - 1 === innerIndex"
 															cols="2"
-															variant="outline-primary"
-															>add rule</b-button
 														>
+															add rule
+														</div>
 
 														<!-- Remove rule -->
-														<b-button
+														<div
 															@click="removeParameters(index, innerIndex)"
 															v-show="fields.rules[index].parameters.length - 1 !== innerIndex"
 															cols="2"
-															variant="outline-danger"
-															>remove rule</b-button
+															class="form-control pl-0 ml-0 remove-rule"
 														>
+															remove rule
+														</div>
 													</b-input-group-append>
 												</b-input-group>
 											</b-col>
@@ -248,5 +255,21 @@ export default {
 <style >
 .background {
 	background-color: #d3d3d3;
+}
+
+.add-rule {
+	position: relative;
+	right: 10px;
+	color: #4d94ff !important;
+	border-left: 0px !important;
+	cursor: pointer;
+}
+
+.remove-rule {
+	position: relative;
+	right: 10px;
+	color: red !important;
+	border-left: 0px !important;
+	cursor: pointer;
 }
 </style>
